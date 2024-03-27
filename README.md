@@ -1,6 +1,6 @@
 # 3-Tier Application: Product Review System
 
-### Overview
+## Overview
 This repository contains a 3-tier web application, the Product Review System, where users can add products and leave reviews. The 3-tier architecture comprises a frontend, backend, and a database. The application is designed to run on AWS infrastructure with high availability and scalability in mind.
 
 - The Frontend application provides a user interface built with HTML, CSS, and JavaScript, served by an Nginx server. 

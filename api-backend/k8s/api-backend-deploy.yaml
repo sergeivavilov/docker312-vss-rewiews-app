@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: api-backend
+  name: api-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-backend
+  template:
+    metadata:
+      labels:
+        app: api-backend
+    spec:
+      containers:
+      - image: {AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/api-backend:1.0
+        name: api-backend
+        ports:
+        - containerPort: 5000
+        env:
+        - name: DB_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              name: backend-secret           
+              key: DB_ENDPOINT
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: backend-secret
+              key: DB_USERNAME
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: backend-secret
+              key: DB_PASSWORD
+        - name: DB_NAME
+          valueFrom: 
+            secretKeyRef:
+              name: backend-secret
+              key: DB_NAME
